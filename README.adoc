@@ -4,19 +4,34 @@
 
 This application expose api for Real estate listing.Listing_Id is same as mls_number.
 
-### How to Run Application Localy:
+### Technologies Used
+
+* Java(11) with Spring Boot, and Java Validation API's Spring Data JPA
+* Build Tool - Gradle
+* H2 Database - In Memory
+* OS -Build with MacOSX
+
+### Prerequisite
+* Java 11 and gradle setup on mac or window's
+
+### How to Run Application Locally:
 
 [source, bash]
 ----
-
 git clone https://github.com/sonaltarpe/home-spotter-listing.git
 cd home-spotter-listing
 ./gradlew clean build
 ./gradlew bootRun
-
 ----
 
-### API's  exposed
+Note: If you face permission denied error for ./gradlew run below command from root dir:
+
+[source, bash]
+----
+chmod +x gradlew
+----
+
+### API's can be tested with curl
 
 * POST /api/v1/listings  - Create new listing  
 
@@ -75,15 +90,8 @@ curl --location --request DELETE 'http://localhost:8081/api/v1/listings/1'
 * Run application and test API's from collection
 
 ### Verify Data
-* Open [http://localhost:8081/h2-console](http://localhost:8081/h2-console)
+* Open http://localhost:8081/h2-console
 * JDBC Url: jdbc:h2:mem:listing_db
 * Username: root
 * Password: password
 
-
-### Technologies Used
-
-* Java with Spring Boot, and Java Validation API's Spring Data JPA
-* Build Tool - Gradle
-* H2 Database - In Memeory
-* OS -Build with MacOSX
