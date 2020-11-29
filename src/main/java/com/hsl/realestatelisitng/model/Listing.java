@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
@@ -63,5 +64,11 @@ public class Listing {
     @Temporal(TemporalType.DATE)
     @Column(name="listing_date")
     private Date listingDate;
+
+    @UpdateTimestamp
+    @JsonProperty("listing_modified_date")
+    @Temporal(TemporalType.DATE)
+    @Column(name = "listing_modified_date")
+    private Date listingModifiedDate;
 
 }
