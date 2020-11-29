@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "3f67015e-0428-4313-ac22-8166e4a7f2b6",
+		"_postman_id": "5ec4600e-83d0-4f41-8a73-416ed5ec6e74",
 		"name": "home-spotter",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -12,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"city\":\"Minneapolis\",\n    \"street_address\": \"123 Main St\",\n    \"agent_id\":\"5\",\n    \"postal_code\":\"55112\",\n    \"state\":\"MN\",\n    \"asking_price\":\"123\"\n\n}",
+					"raw": "{\n    \"city\":\"New Brighton\",\n    \"street_address\": \"123 Main St\",\n    \"agent_id\":\"5\",\n    \"postal_code\":\"55112\",\n    \"state\":\"MN\",\n    \"asking_price\":\"230\"\n\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -63,10 +63,19 @@
 			"response": []
 		},
 		{
-			"name": "DELETE - listing",
+			"name": "PUT - listing",
 			"request": {
-				"method": "DELETE",
+				"method": "PUT",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"listing_id\": 1,\n    \"agent_id\": 5,\n    \"city\": \"St Paul\",\n    \"street_address\": \"123 Main St\",\n    \"state\": \"MN\",\n    \"postal_code\": \"55112\",\n    \"asking_price\": 123.0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
 					"raw": "http://localhost:8081/api/v1/listings/1",
 					"protocol": "http",
@@ -85,19 +94,10 @@
 			"response": []
 		},
 		{
-			"name": "PUT - listing",
+			"name": "DELETE - listing",
 			"request": {
-				"method": "PUT",
+				"method": "DELETE",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"listing_id\": 1,\n    \"agent_id\": 5,\n    \"city\": \"Minneapolis\",\n    \"street_address\": \"123 Main St\",\n    \"state\": \"MN\",\n    \"postal_code\": \"55112\",\n    \"asking_price\": 123.0\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
 					"raw": "http://localhost:8081/api/v1/listings/1",
 					"protocol": "http",

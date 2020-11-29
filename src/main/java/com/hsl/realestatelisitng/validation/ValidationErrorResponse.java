@@ -1,21 +1,24 @@
 package com.hsl.realestatelisitng.validation;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+// This class sends the response/ validation error failures
 
 public class ValidationErrorResponse {
-    private List<String> violations;
+    private Map<String, String> errors;
 
     public ValidationErrorResponse() {
-        this.violations = new ArrayList<>();
+        this.errors = new HashMap<>();
     }
-    public List<String> getViolations() {
-        return violations;
+    public Map<String, String>getErrors() {
+        return errors;
     }
 
-    public void setViolations(List<String> violations) {
-        this.violations = violations;
+    public void setErrors(Map<String, String> errors) {
+        this.errors = errors;
     }
 }
 

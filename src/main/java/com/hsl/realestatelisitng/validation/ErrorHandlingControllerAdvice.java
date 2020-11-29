@@ -15,8 +15,12 @@ import javax.persistence.EntityNotFoundException;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+// This class provide global exception handing for method validation exception and
+//field validation exception
 @ControllerAdvice
 class ErrorHandlingControllerAdvice {
 
@@ -25,17 +29,16 @@ class ErrorHandlingControllerAdvice {
     @ResponseBody
     ValidationErrorResponse onMethodArgumentNotValidException(
             MethodArgumentNotValidException e) {
-        List<FieldError> errors= e.getBindingResult().getFieldErrors();
-        List<String> errorList = new ArrayList<>();
-        if(!CollectionUtils.isEmpty(errors)){
-            errors.forEach( fError->{
-                System.out.println(fError.getField()+":"+fError.getDefaultMessage());
-                errorList.add(fError.getField()+":"+fError.getDefaultMessage());
-            });
-        }
-        ValidationErrorResponse error = new ValidationErrorResponse();
-        error.setViolations(errorList);
-        return error;
+        ValidationErrorResponse response = new ValidationErrorResponse();
+        Map<String, String> errors = new HashMap<>();
+        e.getBindingResult().getAllErrors().forEach((error) -> {
+            String fieldName = ((FieldError) error).getField();
+            String errorMessage = error.getDefaultMessage();
+            errors.put(fieldName, errorMessage);
+        });
+        response.setErrors(errors);
+        return response;
+
     }
 
     @ExceptionHandler(EntityNotFoundException.class)

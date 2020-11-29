@@ -46,7 +46,6 @@ curl  -X POST 'http://localhost:8081/api/v1/listings' \
     "postal_code":"55112",
     "state":"MN",
     "asking_price":"123"
-
 }'
 ----
 * PUT /api/v1/listings/{listing_id} - Update existing listing

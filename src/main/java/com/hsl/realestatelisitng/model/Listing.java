@@ -5,9 +5,12 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.util.Date;
 
 @Entity(name="listings")
 @AllArgsConstructor
@@ -54,5 +57,11 @@ public class Listing {
     @JsonProperty("asking_price")
     @Column(name="asking_price")
     private float askingPrice;
+
+    @JsonProperty("listing_date")
+    @CreationTimestamp
+    @Temporal(TemporalType.DATE)
+    @Column(name="listing_date")
+    private Date listingDate;
 
 }

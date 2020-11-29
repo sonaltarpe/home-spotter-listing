@@ -30,13 +30,7 @@ public class ListingController {
         this.listingService = listingService;
     }
 
-    @GetMapping("{id}")
-    public ResponseEntity<Listing> getListingById(@PathVariable @Min(1) Long id) {
-
-        Listing listing = listingService.getListingById(id);
-        return new ResponseEntity<>(listing, HttpStatus.OK);
-    }
-
+    // Get listings by agent id
     @GetMapping
     public ResponseEntity<List<Listing>> getAllListingByAgentId(@RequestParam(name="agent_id") @Min(1)  Long agentId ){
         System.out.println(agentId);
@@ -44,12 +38,14 @@ public class ListingController {
         return new ResponseEntity<>(listings, HttpStatus.OK);
     }
 
+    //Create new listings
     @PostMapping
     public ResponseEntity<Listing> createListing(@Valid @RequestBody final Listing listing){
         Listing newListing = listingService.create(listing);
         return new ResponseEntity<>(newListing, HttpStatus.CREATED);
     }
 
+    //Updating listings data
     @PutMapping("/{listingId}")
     public ResponseEntity<Listing> updateListing(@PathVariable(name = "listingId") Long listingId,
                                                  @RequestBody Listing listing){
@@ -61,7 +57,7 @@ public class ListingController {
         return new ResponseEntity<>(listing, HttpStatus.OK);
     }
 
-
+    //Removing listings by mls_number
     @DeleteMapping("/{listingId}")
     public ResponseEntity<Listing> deleteListing(@PathVariable(value = "listingId") @Min(1)  Long listingId){
        listingService.delete(listingId);
